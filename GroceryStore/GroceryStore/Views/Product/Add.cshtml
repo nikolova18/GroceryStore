@@ -1,0 +1,36 @@
+﻿@model AddProductFormModel
+
+@{ ViewData["Title"] = "Add product"; }
+<div class="row">
+    <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+        <h2 class="heading-margin text-center">Add Product</h2>
+        <form method="post">
+                <div class="form-group">
+                    <label asp-for="Name"></label>
+                    <input asp-for="Name" class="form-control" placeholder="....">
+                    <span asp-validation-for="Name" class="small text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Origin"></label>
+                    <input asp-for="Origin" class="form-control" placeholder="Bulgaria, Romania, etc...">
+                    <span asp-validation-for="Origin" class="small text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Price"></label>
+                    <input asp-for="Price" class="form-control" placeholder="2.25,5.00,14.99,etc...">
+                    <span asp-validation-for="Price" class="small text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CategoryId"></label>
+                    <select asp-for="CategoryId" class="form-control">
+                        @foreach (var category in Model.Categories)
+                        {
+                        <option value="@category.Id">@category.Name</option>
+                        }
+                    </select>
+                </div>
+
+                <input class="btn btn-primary" type="submit" value="Save" />
+            </form>
+    </div>
+</div>
